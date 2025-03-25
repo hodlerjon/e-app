@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savat</title>
+</head>
+<body>
+    <h1>Savatdagi mahsulotlar</h1>
+    
+    {% if cart %}
+        <ul>
+            {% for item in cart %}
+                <li>{{ products[item]["name"] }} - {{ products[item]["price"] }}$</li>
+            {% endfor %}
+        </ul>
+        <a href="/clear_cart">Savatni tozalash</a>
+    {% else %}
+        <p>Savat bo‘sh.</p>
+    {% endif %}
+
+    <h2>Mahsulotlar</h2>
+    <ul>
+        {% for id, product in products.items() %}
+            <li>{{ product["name"] }} - {{ product["price"] }}$ 
+                <a href="/add_to_cart/{{ id }}">Savatga qo‘shish</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
